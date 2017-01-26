@@ -16,6 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "^3.3.7"
+    "materialize": "^0.98.0"
   }
 }
