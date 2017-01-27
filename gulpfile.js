@@ -22,6 +22,9 @@ gulp.task('sass', function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task('watch', ['sass', 'js', 'html', 'browser-sync'], function () {
+
+
     gulp.watch(['./src/**/*.scss'], ['sass']);
     gulp.watch(['./src/**/*.js'], ['js']);
     gulp.watch(['./src/*.html'], ['html']);
@@ -40,7 +43,7 @@ gulp.task('static', function () {
         .pipe(gulp.dest('dist/fonts'));
     gulp.src('./src/img/**')
         .pipe(gulp.dest('dist/img'));
-})
+});
 
 gulp.task('browser-sync', function() {
     browserSync.init({
