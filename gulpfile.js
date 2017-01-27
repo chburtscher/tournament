@@ -10,10 +10,10 @@ gulp.task('sass', function () {
         .pipe(browserSync.stream());
 });
 
-gulp.task('watch', ['sass', 'html', 'browser-sync'], function () {
+gulp.task('watch', ['sass', 'html', 'static', 'browser-sync'], function () {
     gulp.watch(['./src/**/*.scss'], ['sass']);
     gulp.watch(['./src/*.html'], ['html']);
-
+    gulp.watch(['./src/img/**'], ['static']);
 });
 
 gulp.task('html', function () {
@@ -22,6 +22,13 @@ gulp.task('html', function () {
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
 });
+
+gulp.task('static', function () {
+    gulp.src('./bower_components/materialize/dist/fonts/**')
+        .pipe(gulp.dest('dist/fonts'));
+    gulp.src('./src/img/**')
+        .pipe(gulp.dest('dist/img'));
+})
 
 gulp.task('browser-sync', function() {
     browserSync.init({
